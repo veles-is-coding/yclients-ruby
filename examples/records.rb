@@ -8,8 +8,9 @@ api = Yclients::Client.new(
   user_token: ENV.fetch("YCLIENTS_USER_TOKEN"),
 )
 
+# Replace 123 with a company ID from your application's settings.
 api.records.each(
-  company_id: ENV.fetch("YCLIENTS_COMPANY_ID"),
+  company_id: 123,
   start_date: Date.new(2025, 1, 1),
   end_date: Date.today,
 ) do |record|

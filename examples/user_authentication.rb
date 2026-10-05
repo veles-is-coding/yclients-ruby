@@ -5,6 +5,7 @@ require "yclients"
 base = Yclients::Client.new(partner_token: ENV.fetch("YCLIENTS_PARTNER_TOKEN"))
 user_api = base.with_user_token(ENV.fetch("YCLIENTS_USER_TOKEN"))
 
-user_api.clients.each(company_id: ENV.fetch("YCLIENTS_COMPANY_ID"), fields: ["id"]) do |client|
+# Replace 123 with a company ID from your application's settings.
+user_api.clients.each(company_id: 123, fields: ["id"]) do |client|
   puts client[:id]
 end
