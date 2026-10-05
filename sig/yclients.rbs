@@ -1,0 +1,22 @@
+module Yclients
+  VERSION: String
+
+  type identifier = Integer | String
+  type date_input = Date | DateTime | Time | String
+  type json_value = nil | bool | Integer | Float | String | Array[json_value] | Hash[Symbol, json_value]
+  type request_value = nil | bool | Numeric | String | Symbol | Date | Time | Array[request_value] | Hash[String | Symbol, request_value]
+  type parameters = Hash[String | Symbol, request_value]
+  type headers = Hash[String, String | Array[String]]
+
+  interface _Logger
+    def info: (String message) -> untyped
+  end
+
+  interface _Transport
+    def request: (Symbol method, String path, ?params: parameters, ?body: request_value) -> Response
+  end
+
+  interface _TransportFactory
+    def call: (Configuration configuration) -> _Transport
+  end
+end

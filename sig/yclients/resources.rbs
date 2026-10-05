@@ -1,0 +1,83 @@
+module Yclients
+  module Resources
+    class Base
+      def initialize: (_Transport transport) -> void
+      def inspect: () -> String
+
+      private
+
+      attr_reader transport: _Transport
+      def id: (identifier value) -> String
+      def validate_pagination: (Integer page, Integer per_page) -> nil
+    end
+
+    module Paginated
+      def each: (**request_value options) { (json_value item) -> void } -> self
+              | (**request_value options) -> Enumerator[json_value, self]
+      def each_page: (?page: Integer, **request_value options) { (Page page) -> void } -> self
+                   | (?page: Integer, **request_value options) -> Enumerator[Page, self]
+
+      private
+
+      def fetch_page: (**request_value options) -> Page
+    end
+
+    class Auth < Base
+      class Result < Response
+        def user_token: () -> String?
+      end
+
+      def authorize: (login: String, password: String) -> Result
+    end
+
+    class Companies < Base
+      include Paginated
+
+      def list: (?page: Integer, ?per_page: Integer, **request_value filters) -> Page
+      def retrieve: (company_id: identifier) -> Response
+      def each: (?page: Integer, ?per_page: Integer, **request_value filters) { (json_value item) -> void } -> self
+              | (?page: Integer, ?per_page: Integer, **request_value filters) -> Enumerator[json_value, self]
+      def each_page: (?page: Integer, ?per_page: Integer, **request_value filters) { (Page page) -> void } -> self
+                   | (?page: Integer, ?per_page: Integer, **request_value filters) -> Enumerator[Page, self]
+    end
+
+    class Clients < Base
+      include Paginated
+
+      # An empty hash is accepted for backwards compatibility and becomes [].
+      type filters = Array[parameters] | { }
+
+      def search: (company_id: identifier, ?filters: filters, ?page: Integer, ?per_page: Integer, **request_value options) -> Page
+      def retrieve: (company_id: identifier, client_id: identifier) -> Response
+      def each: (company_id: identifier, ?filters: filters, ?page: Integer, ?per_page: Integer, **request_value options) { (json_value item) -> void } -> self
+              | (company_id: identifier, ?filters: filters, ?page: Integer, ?per_page: Integer, **request_value options) -> Enumerator[json_value, self]
+      def each_page: (company_id: identifier, ?filters: filters, ?page: Integer, ?per_page: Integer, **request_value options) { (Page page) -> void } -> self
+                   | (company_id: identifier, ?filters: filters, ?page: Integer, ?per_page: Integer, **request_value options) -> Enumerator[Page, self]
+    end
+
+    class Records < Base
+      include Paginated
+
+      def list: (company_id: identifier, ?start_date: date_input?, ?end_date: date_input?, ?staff_id: identifier?, ?client_id: identifier?, ?page: Integer, ?per_page: Integer) -> Page
+      def retrieve: (company_id: identifier, record_id: identifier) -> Response
+      def each: (company_id: identifier, ?start_date: date_input?, ?end_date: date_input?, ?staff_id: identifier?, ?client_id: identifier?, ?page: Integer, ?per_page: Integer) { (json_value item) -> void } -> self
+              | (company_id: identifier, ?start_date: date_input?, ?end_date: date_input?, ?staff_id: identifier?, ?client_id: identifier?, ?page: Integer, ?per_page: Integer) -> Enumerator[json_value, self]
+      def each_page: (company_id: identifier, ?start_date: date_input?, ?end_date: date_input?, ?staff_id: identifier?, ?client_id: identifier?, ?page: Integer, ?per_page: Integer) { (Page page) -> void } -> self
+                   | (company_id: identifier, ?start_date: date_input?, ?end_date: date_input?, ?staff_id: identifier?, ?client_id: identifier?, ?page: Integer, ?per_page: Integer) -> Enumerator[Page, self]
+    end
+
+    class Services < Base
+      def list: (company_id: identifier, ?staff_id: identifier?, ?category_id: identifier?) -> Page
+      def retrieve: (company_id: identifier, service_id: identifier) -> Response
+    end
+
+    class Staff < Base
+      def list: (company_id: identifier) -> Page
+      def retrieve: (company_id: identifier, staff_id: identifier) -> Response
+    end
+
+    class Permissions < Base
+      def retrieve: (company_id: identifier, ?groups: Array[String]?) -> Response
+    end
+  end
+end

@@ -1,0 +1,24 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1001539,
+      "name": "Example",
+      "company_id": 176275,
+      "specialization": "Example",
+      "position": {
+        "id": 1,
+        "title": "Example"
+      },
+      "avatar": "",
+      "avatar_big": "",
+      "fired": 0,
+      "status": 0,
+      "hidden": 0,
+      "user_id": 12345
+    }
+  ],
+  "meta": {
+    "total_count": 1
+  }
+}

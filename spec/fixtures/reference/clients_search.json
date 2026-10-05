@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "data": [
+    {
+      "name": "Example",
+      "id": 2
+    },
+    {
+      "name": "Example",
+      "id": 3
+    },
+    {
+      "name": "Example",
+      "id": 1
+    }
+  ],
+  "meta": {
+    "total_count": 908
+  }
+}

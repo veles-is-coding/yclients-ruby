@@ -1,0 +1,79 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": "79067",
+      "title": "Example",
+      "category_id": "4",
+      "price_min": "1000.00",
+      "price_max": "1000.00",
+      "discount": "0",
+      "comment": "Example",
+      "weight": "2",
+      "active": "1",
+      "api_id": "",
+      "staff": []
+    },
+    {
+      "id": "83169",
+      "title": "Example",
+      "category_id": "83167",
+      "price_min": "1300.00",
+      "price_max": "1300.00",
+      "discount": "0",
+      "comment": "Example",
+      "weight": "6",
+      "active": "1",
+      "api_id": "",
+      "staff": [
+        {
+          "id": "5905",
+          "seance_length": "2700"
+        },
+        {
+          "id": "5907",
+          "seance_length": "3600"
+        },
+        {
+          "id": "8973",
+          "seance_length": "3600"
+        },
+        {
+          "id": "13616",
+          "seance_length": "3600"
+        },
+        {
+          "id": "16681",
+          "seance_length": "3600"
+        },
+        {
+          "id": "17969",
+          "seance_length": "3600"
+        },
+        {
+          "id": "34006",
+          "seance_length": "3600"
+        }
+      ],
+      "image_group": {
+        "id": 72234,
+        "entity": "settings_service",
+        "entity_id": 389927,
+        "images": {
+          "basic": {
+            "id": "186791",
+            "path": "https://yclients.ru/path/to/image/tagret-image.jpeg",
+            "width": "372",
+            "height": "280",
+            "type": "jpeg",
+            "image_group_id": 72234,
+            "version": "basic"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {
+    "total_count": 2
+  }
+}

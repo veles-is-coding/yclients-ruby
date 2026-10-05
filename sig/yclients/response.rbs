@@ -1,0 +1,26 @@
+module Yclients
+  class Response
+    attr_reader payload: json_value
+    attr_reader status: Integer
+    attr_reader headers: headers
+
+    def initialize: (payload: json_value, status: Integer, headers: headers) -> void
+    def data: () -> json_value
+    def meta: () -> json_value
+    def inspect: () -> String
+
+    private
+
+    def envelope?: () -> bool
+  end
+
+  class Page < Response
+    attr_reader page: Integer
+    attr_reader per_page: Integer?
+
+    def initialize: (response: Response, ?page: Integer, ?per_page: Integer?, ?use_total_count: bool) -> void
+    def data: () -> Array[json_value]
+    def items: () -> Array[json_value]
+    def next_page?: () -> bool
+  end
+end

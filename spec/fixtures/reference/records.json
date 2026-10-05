@@ -1,0 +1,191 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": 2,
+      "company_id": 4564,
+      "staff_id": 9,
+      "services": [
+        {
+          "id": 1,
+          "title": "Example",
+          "cost": 100,
+          "cost_to_pay": 100,
+          "manual_cost": 100,
+          "cost_per_unit": 100,
+          "discount": 0,
+          "first_cost": 100,
+          "amount": 1
+        }
+      ],
+      "goods_transactions": [],
+      "staff": {
+        "id": 9,
+        "name": "Example",
+        "specialization": "Example",
+        "position": {
+          "id": 1,
+          "title": "Example"
+        },
+        "avatar": "",
+        "avatar_big": "",
+        "rating": 0,
+        "votes_count": 0
+      },
+      "client": null,
+      "comer": null,
+      "clients_count": 1,
+      "date": "2019-01-16 16:00:00",
+      "datetime": "2019-01-16T16:00:00+09:00",
+      "create_date": "2019-01-16T20:35:11+0900",
+      "comment": "Example",
+      "online": false,
+      "visit_attendance": 0,
+      "attendance": 0,
+      "confirmed": 1,
+      "seance_length": 3600,
+      "length": 3600,
+      "sms_before": 0,
+      "sms_now": 0,
+      "sms_now_text": "",
+      "email_now": 0,
+      "notified": 0,
+      "master_request": 0,
+      "api_id": "",
+      "from_url": "",
+      "review_requested": 0,
+      "visit_id": "8262996",
+      "created_user_id": 1073232,
+      "deleted": false,
+      "paid_full": 0,
+      "prepaid": false,
+      "prepaid_confirmed": false,
+      "last_change_date": "2019-01-16T20:35:15+0900",
+      "custom_color": "",
+      "custom_font_color": "",
+      "record_labels": [],
+      "activity_id": 0,
+      "custom_fields": [],
+      "documents": [
+        {
+          "id": 8172893,
+          "type_id": 7,
+          "storage_id": 0,
+          "user_id": 746310,
+          "company_id": 4564,
+          "number": 4163,
+          "comment": "Example",
+          "date_created": "2019-01-16 16:00:00",
+          "category_id": 0,
+          "visit_id": 3,
+          "record_id": 2,
+          "type_title": "Визит",
+          "is_sale_bill_printed": false
+        }
+      ],
+      "sms_remain_hours": 5,
+      "email_remain_hours": 1,
+      "bookform_id": 0,
+      "record_from": "",
+      "is_mobile": 0,
+      "is_sale_bill_printed": false,
+      "consumables": [],
+      "finance_transactions": []
+    },
+    {
+      "id": 9,
+      "company_id": 4564,
+      "staff_id": 49,
+      "services": [],
+      "goods_transactions": [],
+      "staff": {
+        "id": 49,
+        "name": "Example",
+        "specialization": "Example",
+        "position": {
+          "id": 1,
+          "title": "Example"
+        },
+        "avatar": "",
+        "avatar_big": "",
+        "rating": 0,
+        "votes_count": 0
+      },
+      "date": "2019-01-16 16:00:00",
+      "datetime": "2019-01-16T16:00:00+09:00",
+      "create_date": "2019-01-16T20:35:11+0900",
+      "comment": "Example",
+      "online": true,
+      "visit_attendance": 1,
+      "attendance": 1,
+      "confirmed": 1,
+      "seance_length": 10800,
+      "length": 10800,
+      "sms_before": 0,
+      "sms_now": 0,
+      "sms_now_text": "",
+      "email_now": 0,
+      "notified": 0,
+      "master_request": 1,
+      "api_id": "",
+      "from_url": "",
+      "review_requested": 0,
+      "visit_id": "8262996",
+      "created_user_id": 1073232,
+      "deleted": false,
+      "paid_full": 0,
+      "prepaid": false,
+      "prepaid_confirmed": false,
+      "last_change_date": "2017-01-09T20:45:30+0900",
+      "custom_color": "f44336",
+      "custom_font_color": "#ffffff",
+      "record_labels": [
+        {
+          "id": "67345",
+          "title": "Example",
+          "color": "#009800",
+          "icon": "unlock",
+          "font_color": "#ffffff"
+        },
+        {
+          "id": "104474",
+          "title": "Example",
+          "color": "#3b2c54",
+          "icon": "odnoklassniki",
+          "font_color": "#ffffff"
+        }
+      ],
+      "activity_id": 0,
+      "custom_fields": [],
+      "documents": [
+        {
+          "id": 8172893,
+          "type_id": 7,
+          "storage_id": 0,
+          "user_id": 746310,
+          "company_id": 4564,
+          "number": 4163,
+          "comment": "Example",
+          "date_created": "2019-01-16 16:00:00",
+          "category_id": 0,
+          "visit_id": 3,
+          "record_id": 2,
+          "type_title": "Визит",
+          "is_sale_bill_printed": false
+        }
+      ],
+      "sms_remain_hours": 5,
+      "email_remain_hours": 1,
+      "bookform_id": 0,
+      "record_from": "",
+      "is_mobile": 0,
+      "is_sale_bill_printed": false,
+      "consumables": [],
+      "finance_transactions": []
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "total_count": 10
+  }
+}

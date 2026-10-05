@@ -1,0 +1,13 @@
+module Yclients
+  module Transport
+    class Faraday
+      def initialize: (Configuration configuration) -> void
+      def request: (Symbol method, String path, ?params: parameters, ?body: request_value) -> Response
+      def inspect: () -> String
+    end
+  end
+
+  module Serialization
+    def self.normalize: (request_value value) -> request_value
+  end
+end
