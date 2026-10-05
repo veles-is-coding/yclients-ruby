@@ -9,18 +9,27 @@ ActiveRecord, ActiveSupport, queue, synchronization, or business-rule dependenci
 
 ## Installation
 
-The package name is `yclients`; this repository does not yet establish a published
-RubyGems release. Use a local checkout while validating v0.1:
+Until the first RubyGems release, add the GitHub repository to your application's
+`Gemfile`:
+
+```ruby
+gem "yclients", git: "https://github.com/veles-is-coding/yclients-ruby.git", branch: "main"
+```
+
+If you are working on the gem locally, use a local checkout instead. Replace the
+path with the actual location of the repository:
 
 ```ruby
 gem "yclients", path: "/path/to/yclients-ruby"
 ```
 
+After adding either entry, run this command from your application's directory:
+
 ```sh
-cd /path/to/yclients-ruby
 bundle install
-gem build yclients.gemspec
 ```
+
+Bundler loads the gem directly from the selected source; no `.gem` build is needed.
 
 ## Configuration
 
@@ -238,12 +247,20 @@ timeouts, and retries; resource classes never depend directly on Faraday.
 
 ## Development and release validation
 
+To work on the gem itself, run these commands from the repository root:
+
 ```sh
 bundle install
 bundle exec rspec
 bundle exec rubocop
 bundle exec rake signatures
 bundle exec rake
+```
+
+To build the distributable `.gem` package:
+
+```sh
+gem build yclients.gemspec
 ```
 
 The gem ships RBS signatures in `sig/` for the client, resources, responses,
