@@ -24,6 +24,7 @@ module Yclients
     def clients: () -> Resources::Clients
     def records: () -> Resources::Records
     def services: () -> Resources::Services
+    def service_categories: () -> Resources::ServiceCategories
     def staff: () -> Resources::Staff
     def permissions: () -> Resources::Permissions
   end

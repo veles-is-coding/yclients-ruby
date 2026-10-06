@@ -71,6 +71,11 @@ module Yclients
       def retrieve: (company_id: identifier, service_id: identifier) -> Response
     end
 
+    class ServiceCategories < Base
+      def list: (company_id: identifier) -> Page
+      def retrieve: (company_id: identifier, category_id: identifier) -> Response
+    end
+
     class Staff < Base
       def list: (company_id: identifier) -> Page
       def retrieve: (company_id: identifier, staff_id: identifier) -> Response
