@@ -37,4 +37,13 @@ RSpec.describe("Documented response contracts") do
     expect(result.items.first[:id]).to(eq(1_001_539))
     expect(result.meta).to(eq(total_count: 1))
   end
+
+  it "reads the documented service category collection" do
+    stub_request(:get, endpoint("/company/1/service_categories/"))
+      .to_return(body: fixture("service_categories"))
+    result = api.service_categories.list(company_id: 1)
+    expect(result.items.map { |item| item[:id] }).to(eq([345, 3456]))
+    expect(result.items.first[:staff]).to(eq([5006, 8901, 26514, 26516, 26519, 26520]))
+    expect(result.meta).to(eq(total_count: 2))
+  end
 end

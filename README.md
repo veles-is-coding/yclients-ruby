@@ -87,6 +87,8 @@ api.clients.retrieve(company_id: 123, client_id: 456)
 api.services.list(company_id: 123, staff_id: nil, category_id: nil)
 api.services.retrieve(company_id: 123, service_id: 789)
 
+api.service_categories.list(company_id: 123)
+
 api.staff.list(company_id: 123)
 api.staff.retrieve(company_id: 123, staff_id: 789)
 

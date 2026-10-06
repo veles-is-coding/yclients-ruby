@@ -14,6 +14,7 @@ require_relative "resources/companies"
 require_relative "resources/clients"
 require_relative "resources/records"
 require_relative "resources/services"
+require_relative "resources/service_categories"
 require_relative "resources/staff"
 require_relative "resources/permissions"
 
@@ -27,6 +28,7 @@ module Yclients
       clients: Resources::Clients,
       records: Resources::Records,
       services: Resources::Services,
+      service_categories: Resources::ServiceCategories,
       staff: Resources::Staff,
       permissions: Resources::Permissions,
     }.freeze

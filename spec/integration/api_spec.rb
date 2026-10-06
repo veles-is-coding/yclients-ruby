@@ -104,6 +104,16 @@ RSpec.describe("Live YCLIENTS contracts", :live) do
     end
   end
 
+  it "lists service categories without changing data" do
+    response = live_api.service_categories.list(company_id: company_id)
+    check_collection(response)
+  end
+
+  it "retrieves a service category when the company has one" do
+    response = live_api.service_categories.list(company_id: company_id)
+    check_retrieval(:service_categories, response, :category_id)
+  end
+
   it "retrieves permissions and accepts the documented group filter" do
     response = live_api.permissions.retrieve(company_id: company_id, groups: ["settings"])
     check_response(response)

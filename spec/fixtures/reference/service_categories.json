@@ -1,0 +1,24 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": 345,
+      "salon_service_id": 353,
+      "title": "Стрижки мужские",
+      "api_id": "adw322",
+      "weight": 10,
+      "staff": [5006, 8901, 26514, 26516, 26519, 26520]
+    },
+    {
+      "id": 3456,
+      "salon_service_id": 3252,
+      "title": "Стрижки женские",
+      "api_id": "adw323",
+      "weight": 9,
+      "staff": [5006, 8901]
+    }
+  ],
+  "meta": {
+    "total_count": 2
+  }
+}

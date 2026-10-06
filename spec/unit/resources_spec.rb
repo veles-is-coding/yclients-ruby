@@ -109,6 +109,23 @@ RSpec.describe("Resource adapters") do
     expect(api.staff.list(company_id: 1).items).to(eq([{ id: 4 }]))
   end
 
+  it "gets service categories from the current collection route" do
+    stub_request(:get, endpoint("/company/1/service_categories/"))
+      .to_return(body: json_response([{ id: 4 }]))
+    result = api.service_categories.list(company_id: 1)
+    expect(result).to(be_a(Yclients::Page))
+    expect(result.items).to(eq([{ id: 4 }]))
+  end
+
+  it "retrieves a service category from its separate endpoint" do
+    stub_request(:get, endpoint("/service_category/1/2"))
+      .to_return(body: json_response({ id: 2 }))
+    result = api.service_categories.retrieve(company_id: 1, category_id: 2)
+    expect(result).to(be_a(Yclients::Response))
+    expect(result).not_to(be_a(Yclients::Page))
+    expect(result.data).to(eq(id: 2))
+  end
+
   it "maps permission groups to bracketed query parameters" do
     stub_request(:get, endpoint("/user/permissions/1")).with(query: { "group_permissions" => ["settings", "finances"] })
       .to_return(body: json_response({ settings: {} }))
