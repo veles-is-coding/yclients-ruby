@@ -93,7 +93,7 @@ api.staff.list(company_id: 123)
 api.staff.retrieve(company_id: 123, staff_id: 789)
 
 api.records.list(company_id: 123, start_date: nil, end_date: nil,
-                 staff_id: nil, client_id: nil, page: 1, per_page: 300)
+                 staff_id: nil, client_id: nil, with_deleted: nil, page: 1, per_page: 300)
 api.records.retrieve(company_id: 123, record_id: 789)
 
 api.permissions.retrieve(company_id: 123, groups: ["settings"])
@@ -320,3 +320,6 @@ The gem follows SemVer: patches preserve the public API; 0.x can evolve before 1
 ## License
 
 [MIT](LICENSE.txt).
+
+Pass `with_deleted: true` to `records.list`, `records.each`, or `records.each_page`
+to include deleted bookings. Omit it to preserve the API default.
