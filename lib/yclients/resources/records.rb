@@ -5,7 +5,8 @@ module Yclients
     class Records < Base
       include Paginated
 
-      def list(company_id:, start_date: nil, end_date: nil, staff_id: nil, client_id: nil, with_deleted: nil, page: 1, per_page: 300)
+      def list(company_id:, start_date: nil, end_date: nil, staff_id: nil, client_id: nil, with_deleted: nil,
+        changed_after: nil, changed_before: nil, page: 1, per_page: 300)
         validate_pagination(page, per_page)
         params = {
           start_date: start_date,
@@ -13,6 +14,8 @@ module Yclients
           staff_id: staff_id,
           client_id: client_id,
           with_deleted: with_deleted,
+          changed_after: changed_after,
+          changed_before: changed_before,
           page: page,
           count: per_page,
         }.compact

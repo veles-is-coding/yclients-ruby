@@ -323,3 +323,8 @@ The gem follows SemVer: patches preserve the public API; 0.x can evolve before 1
 
 Pass `with_deleted: true` to `records.list`, `records.each`, or `records.each_page`
 to include deleted bookings. Omit it to preserve the API default.
+
+Use `changed_after` and `changed_before` (ISO 8601 datetime strings) on
+`records.list`, `records.each`, or `records.each_page` to fetch bookings by
+modification/creation time rather than appointment time. Combine these with
+`with_deleted: true` to include deleted bookings in incremental synchronization.
