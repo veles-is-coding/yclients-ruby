@@ -49,7 +49,7 @@ api = Yclients::Client.new(
 The client sends `Accept: application/vnd.yclients.v2+json` and
 `Authorization: Bearer <partner_token>, User <user_token>` automatically.
 Without a user token it sends only the Bearer component. Timeouts are in seconds.
-There is no global configuration or token setter. Configuration copies and freezes
+There is no global credential configuration or token setter. Configuration copies and freezes
 credential strings. Each transport reuses one Faraday client with separate
 request parameters, headers, and bodies. The default `net_http` adapter does not
 keep TCP connections open between requests.
@@ -223,7 +223,21 @@ HTTP 429/502/503/504. Backoff includes jitter: 0.25-0.5 seconds before the first
 retry and 0.5-1 second before the second. `Retry-After` remains available to the
 caller; the built-in bounded policy does not wait for arbitrarily long values.
 POST, PUT, PATCH, and DELETE never retry automatically, including POST client search.
-Timeouts apply to each attempt. There is no distributed or process-wide rate limiter.
+Timeouts apply to each attempt. The gem does not provide a distributed rate limiter.
+Applications can install a process-wide hook on the default HTTP transport:
+
+```ruby
+Yclients::Transport::Faraday.request_limiter = shared_limiter
+# shared_limiter.call { perform_http_attempt } must yield once and return its result.
+```
+
+The hook wraps every physical HTTP attempt, including retries, for all default
+HTTP clients and token clones, even clients created before the hook was installed.
+Configure it during application boot, before starting concurrent requests. The
+limiter must support concurrent use and coordinate across processes when needed.
+If it raises before yielding, no HTTP request is sent and its exception propagates.
+The default is `nil`; assign `nil` to disable it. Custom transports are unaffected.
+The gem remains independent of the application's database or queue implementation.
 
 ## Logging and transport customization
 

@@ -30,6 +30,18 @@ module Yclients
         "permissions",
       ].freeze
 
+      class << self
+        attr_reader :request_limiter
+
+        def request_limiter=(limiter)
+          unless limiter.nil? || limiter.respond_to?(:call)
+            raise ConfigurationError, "request_limiter must respond to call"
+          end
+
+          @request_limiter = limiter
+        end
+      end
+
       def initialize(configuration)
         @configuration = configuration
         @connection = build_connection
@@ -73,11 +85,20 @@ module Yclients
 
       def perform(method, path, params, body, retries)
         started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-        response = @connection.run_request(method, "#{@configuration.base_url}#{path}", body, headers) do |req|
-          req.params.update(params)
+        limiter = Faraday.request_limiter
+        response = if limiter
+          limiter.call { execute_request(method, path, params, body) }
+        else
+          execute_request(method, path, params, body)
         end
       ensure
         log(method, path, response&.status, started, retries)
+      end
+
+      def execute_request(method, path, params, body)
+        @connection.run_request(method, "#{@configuration.base_url}#{path}", body, headers) do |req|
+          req.params.update(params)
+        end
       end
 
       def retryable?(method, retries)

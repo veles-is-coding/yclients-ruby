@@ -1,6 +1,8 @@
 module Yclients
   module Transport
     class Faraday
+      def self.request_limiter: () -> _RequestLimiter?
+      def self.request_limiter=: (_RequestLimiter? limiter) -> _RequestLimiter?
       def initialize: (Configuration configuration) -> void
       def request: (Symbol method, String path, ?params: parameters, ?body: request_value) -> Response
       def inspect: () -> String
