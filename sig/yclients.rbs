@@ -8,6 +8,10 @@ module Yclients
   type parameters = Hash[String | Symbol, request_value]
   type headers = Hash[String, String | Array[String]]
 
+  interface _RequestLimiter
+    def call: [T] () { () -> T } -> T
+  end
+
   interface _Logger
     def info: (String message) -> untyped
   end
