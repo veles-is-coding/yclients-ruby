@@ -58,12 +58,12 @@ module Yclients
     class Records < Base
       include Paginated
 
-      def list: (company_id: identifier, ?start_date: date_input?, ?end_date: date_input?, ?staff_id: identifier?, ?client_id: identifier?, ?with_deleted: bool?, ?page: Integer, ?per_page: Integer) -> Page
+      def list: (company_id: identifier, ?start_date: date_input?, ?end_date: date_input?, ?staff_id: identifier?, ?client_id: identifier?, ?with_deleted: bool?, ?changed_after: String?, ?changed_before: String?, ?page: Integer, ?per_page: Integer) -> Page
       def retrieve: (company_id: identifier, record_id: identifier) -> Response
-      def each: (company_id: identifier, ?start_date: date_input?, ?end_date: date_input?, ?staff_id: identifier?, ?client_id: identifier?, ?with_deleted: bool?, ?page: Integer, ?per_page: Integer) { (json_value item) -> void } -> self
-              | (company_id: identifier, ?start_date: date_input?, ?end_date: date_input?, ?staff_id: identifier?, ?client_id: identifier?, ?with_deleted: bool?, ?page: Integer, ?per_page: Integer) -> Enumerator[json_value, self]
-      def each_page: (company_id: identifier, ?start_date: date_input?, ?end_date: date_input?, ?staff_id: identifier?, ?client_id: identifier?, ?with_deleted: bool?, ?page: Integer, ?per_page: Integer) { (Page page) -> void } -> self
-                   | (company_id: identifier, ?start_date: date_input?, ?end_date: date_input?, ?staff_id: identifier?, ?client_id: identifier?, ?with_deleted: bool?, ?page: Integer, ?per_page: Integer) -> Enumerator[Page, self]
+      def each: (company_id: identifier, ?start_date: date_input?, ?end_date: date_input?, ?staff_id: identifier?, ?client_id: identifier?, ?with_deleted: bool?, ?changed_after: String?, ?changed_before: String?, ?page: Integer, ?per_page: Integer) { (json_value item) -> void } -> self
+              | (company_id: identifier, ?start_date: date_input?, ?end_date: date_input?, ?staff_id: identifier?, ?client_id: identifier?, ?with_deleted: bool?, ?changed_after: String?, ?changed_before: String?, ?page: Integer, ?per_page: Integer) -> Enumerator[json_value, self]
+      def each_page: (company_id: identifier, ?start_date: date_input?, ?end_date: date_input?, ?staff_id: identifier?, ?client_id: identifier?, ?with_deleted: bool?, ?changed_after: String?, ?changed_before: String?, ?page: Integer, ?per_page: Integer) { (Page page) -> void } -> self
+                   | (company_id: identifier, ?start_date: date_input?, ?end_date: date_input?, ?staff_id: identifier?, ?client_id: identifier?, ?with_deleted: bool?, ?changed_after: String?, ?changed_before: String?, ?page: Integer, ?per_page: Integer) -> Enumerator[Page, self]
     end
 
     class Services < Base
